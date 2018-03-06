@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, url_for, flash, redirect
-from app.forms import SubmissionForm
+from app.forms import SubmissionForm, LoginForm, RegistrationForm
 from config import Config
 import requests
 import json
@@ -48,8 +48,6 @@ def compile():
     }
     r = requests.post(Config.COMPILE_URL, data=data)
     x = json.loads(r.text)
-    print(json.dumps(x,indent=4))
-    print(x['compile_status'])
     return render_template('compile.html', result=x)
 
 @app.route('/run')
@@ -67,5 +65,13 @@ def run():
 
     r = requests.post(Config.RUN_URL, data=data)
     x = json.loads(r.text)
-    print(json.dumps(x,indent=4))
     return render_template('run.html', result=x)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('logged in with {} username'.format(form.username.data))
+        return redirect(url_for('index'))
+
+    return render_template('login.html',title='Login',form=form)
