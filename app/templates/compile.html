@@ -1,7 +1,28 @@
 {%extends "base.html"%}
 
 {%block app_content%}
-	<p>
-		in compile
-	</p>
+	<div class="container" style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);margin-top:5%;">   
+	 	<div class="row">
+            <div class="col-md-12 right">
+                    <div class="output-details">
+                        <div class="output-details-info compile-status" align="center" style="margin-top:2%;">
+                        	Compile status:
+                        	{%if result['compile_status'] == "OK"%}
+                        	OK
+                        	{%else%}
+                        	...
+                        	{%endif%}
+                        </div>
+                    </div>
+                    {%if result.get('compile_status') != "OK"%}
+                    <div class="output-io" class="p-0 my-3 .border-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+                        <div class="output-error-box">
+                            <div class="error-key" style="color:#040404;"><b>Compilation error</b></div>
+                            <pre class="error-message" style="background-color:#F96467;padding-left:3%">{{result['compile_status']}}</pre>
+                        </div>
+                    </div>
+                    {%endif%}
+            </div>
+        </div>
+    </div>
 {%endblock%}

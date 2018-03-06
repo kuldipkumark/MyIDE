@@ -4236,7 +4236,7 @@ button.bg-dark:focus {
   border-color: #ccc !important; }
 
 .border-warning {
-  border-color: #ffc107 !important; }
+  border-color: #ffc107 important; }
 
 .border-danger {
   border-color: #dc3545 !important; }

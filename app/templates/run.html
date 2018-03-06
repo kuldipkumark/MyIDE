@@ -1,7 +1,68 @@
 {%extends "base.html"%}
 
 {%block app_content%}
-	<p>
-		in run
-	</p>
+	<div class="container" style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);margin-top:5%;">
+	    <div class="row">
+            <div class="col-md-12 right">
+                    <div class="output-details">
+                    	<div class="row">
+	                    	<div class="col-3">
+		                        <div class="output-details-info run-status">
+		                            <div class="key">Run Status: {{result['run_status']['status']}}</div>
+		                        </div>
+		                    </div>
+		                    <div class="col-3">
+		                        <div class="output-details-info compile-status">
+		                            <div class="key">Compile Status: 
+		                            {%if result['compile_stutus'] == "OK"%}
+		                            OK
+		                            {%else%}
+		                            ...
+		                            {%endif%}
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-3">
+		                        <div class="output-details-info time-sec">
+		                        {%if result['run_status']['status'] == "AC"%}
+		                            <div class="key">Time (sec): {{result['run_status']['time_used']}}</div>
+		                        {%endif%}
+		                        </div>
+		                    </div>
+		                    <div class="col-3">
+		                        <div class="output-details-info memory-kb">
+		                        {%if result['run_status']['status'] == "AC"%}
+		                            <div class="key">Memory (KB): {{result['run_status']['memory_used']}}
+		                            </div>
+		                        {%endif%}
+		                        </div>
+		                    </div>
+		                </div>
+		                </div>
+                    <div class="output-io" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+                    {% if result['run_status']['status'] == "CE"%}
+                        <div class="output-error-box">
+                            <div class="error-key" style="color:#040404;"><b>Compilation error</b></div>
+                            <pre class="error-message" style="background-color:#F96467;padding-left:3%">
+                            	{{result['run_status']['status_detail']}}
+                            </pre>
+                        </div>
+                    {%endif%}
+                    {%if result['run_status']['status'] == "AC"%}
+                        <div class="output-io-info output-o-info">
+                            <div class="key">Output (stdout): </div>
+                            {%if result['run_status']['output']%}
+                            <pre class="output-text output-o">
+                            {{result['run_status']['output']}} </pre>
+                           {%else%}
+                           <pre class="output-text output-o">
+                           Standard output is empty</pre>
+                           {%endif%}
+                        </div>
+                       {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {%endblock%}
