@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+
+{% block app_content%}
+	<div class="container" style="width: 350px;margin-top:5%;margin-left:40%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color:#DAD4D4">
+	<h3 align="center" style="color:black"><b>Sign Up</b></h3>
+		<form action="" method="post">
+			{{form.hidden_tag()}}
+			<div>
+				<br>
+				{{ form.username(size=38, placeholder="Username")}}<br>
+				{% for error in form.username.errors%}
+				<span style="color:red;">[{{error}}]</span>
+				{%endfor%}
+				<br>
+			</div>
+			<div>
+				{{ form.email(size=38,placeholder="Email")}}<br>
+				{% for error in form.email.errors%}
+				<span style="color:red;">[{{error}}]</span>
+				{%endfor%}
+				<br>
+			</div>
+			<div>
+	            {{ form.password(size=38, placeholder="Password") }}<br>
+	            {% for error in form.password.errors %}
+	            <span style="color: red;">[{{ error }}]</span>
+	            {% endfor %}
+	            <br>
+	        </div>
+	        <div>
+	            {{ form.password2(size=38, placeholder="Repeat Password") }}<br>
+	            {% for error in form.password2.errors %}
+	            <span style="color: red;">[{{ error }}]</span>
+	            {% endfor %}
+	            <br>
+	        </div>
+	        {{form.submit(class="btn btn-primary ml-auto", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)")}}
+	        <p>
+	        <br>
+	        </p>
+	    </form>
+	</div>
+{%endblock%}    

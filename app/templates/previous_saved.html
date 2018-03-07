@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+
+{%block app_content%}
+	<div class="container" style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);margin-top:5%;">   
+	 	<div class="row">
+            <div class="col-md-12 right">
+                    <div class="output-details">
+                        <div class="output-details-info compile-status" align="center" style="margin-top:2%;">
+                        	Previous Saved:
+                        </div>
+                    </div>
+                    <div class="output-io" class="p-0 my-3 .border-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+                        <div class="output-error-box">
+                            <pre class="error-message" style="background-color:gray;padding-left:3%">{{content}}</pre>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

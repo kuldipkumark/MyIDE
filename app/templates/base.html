@@ -2,8 +2,8 @@
 	<head>
 		<meta charset="utf-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
-		{%if title%}
-			<title>{{title}}-MyIDE</title>
+		{%if current_user.is_authenticated%}
+			<title>{{current_user.username}}-MyIDE</title>
 		{%else%}
 			<title>MyIDE</title>
 		{%endif%}
@@ -29,11 +29,17 @@
 			      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
 			        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 			      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-			        <a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('login')}}">Sign in</a>
+			      {%if current_user.is_anonymous %}
+			        <a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('login')}}">login</a>
+			       {%else%}
+			       <a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('saved')}}">Previous Saved</a>
+			       <a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('logout')}}">logout</a>
 			      </div>
+			      {%endif%}
 			    </div>
 			  </nav>
 		</div>
+		<div class="container"style="margin-top:3%; background-color:#79FCCB;">
 		{% with messages = get_flashed_messages() %}
 		{%if messages %}
 		<ul>
@@ -41,11 +47,14 @@
 			<li>{{message}}</li>
 			{%endfor%}
 		</ul>
+
 		{%endif%}
 		{%endwith%}
+		</div>
+		<div>
 			{%block app_content %}
 			{%endblock%}
-	
+		</div>
 	<footer>
 	<div class="border-light">
 	<div class="container">
