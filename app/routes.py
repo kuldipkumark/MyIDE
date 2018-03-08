@@ -46,15 +46,18 @@ def index():
             else:
                 user = User.query.filter_by(username=current_user.username).first()
                 code = SaveCode(source_code=source, coder=user)
+                flash('Saved')
                 db.session.add(code)
                 db.session.commit()
 
     if request.method == 'GET' and temp_source_code:
         form.source_code.data = temp_source_code
-        user = User.query.filter_by(username=current_user.username).first()
-        code = SaveCode(source_code=temp_source_code, coder=user)
-        db.session.add(code)
-        db.session.commit()
+        if hasattr(current_user, 'username'):
+            user = User.query.filter_by(username=current_user.username).first()
+            code = SaveCode(source_code=temp_source_code, coder=user)
+            db.session.add(code)
+            db.session.commit()
+            flash("Saved")
         temp_source_code = ''
 
     return render_template('index.html', form=form)
@@ -110,6 +113,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('logged out')
     global temp_source_code
     temp_source_code = ''
     return redirect(url_for('index'))

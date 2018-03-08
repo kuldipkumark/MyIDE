@@ -19,8 +19,8 @@
                 document.getElementById(id).style.display = 'none';
             }
         }
-		</script>
-	</head>
+        </script>
+       	</head>
 	<body>
 		<div>
 			   <nav class="navbar navbar-expand-md navbar-dark border border-light bg-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -39,28 +39,27 @@
 			    </div>
 			  </nav>
 		</div>
-		<div class="container"style="margin-top:3%; background-color:#79FCCB;">
-		{% with messages = get_flashed_messages() %}
-		{%if messages %}
-		<ul>
-			{%for message in messages%}
-			<li>{{message}}</li>
-			{%endfor%}
-		</ul>
-
-		{%endif%}
-		{%endwith%}
-		</div>
 		<div>
-			{%block app_content %}
-			{%endblock%}
-		</div>
-	<footer>
-	<div class="border-light">
-	<div class="container">
-	<div class="navbar-brand text-dark">
-	<p aling="center"></p>
-	</div></div></div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+	<footer style="">
+		<div class="border-light">
+		<div class="container">
+		<div class="text-dark">
+		<hr style="height:1px;border:none;color:#333;background-color:#333;" />
+		<p aling="center" style="">Powered By
+			<a href="https://www.hackerearth.com/docs/wiki/developers/legacy/"> HackerEarth API</a>
+			</p>
+		</div></div></div>
 	</footer>
 	
 	</body>
