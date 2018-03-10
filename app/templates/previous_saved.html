@@ -20,6 +20,8 @@
                     </div>
             </div>
         </div>
+        {%if content%}
         <input value='download' type='button'onclick='doDL(document.getElementById("saved_code").innerHTML)' class="btn m-1 btn-success", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+        {%endif%}
     </div>
 {%endblock%}
