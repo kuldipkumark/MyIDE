@@ -11,10 +11,11 @@
                     </div>
                     <div class="output-io" class="p-0 my-3 .border-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
                         <div class="output-error-box">
-                            <pre class="error-message" style="background-color:gray;padding-left:3%">{{content}}</pre>
+                            <pre class="error-message" style="background-color:gray;padding-left:3%" id="saved_code">{{content}}</pre>
                         </div>
                     </div>
             </div>
         </div>
+        <input value='download' type='button'onclick='doDL(document.getElementById("saved_code").innerHTML)' class="btn m-1 btn-success", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
     </div>
 {%endblock%}
