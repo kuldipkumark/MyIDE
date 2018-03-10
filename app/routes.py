@@ -137,5 +137,7 @@ def register():
 def saved():
     user = User.query.filter_by(username=current_user.username).first()
     codes = user.save_codes.all()
+    if len(codes) == 0:
+        return render_template('previous_saved.html', content="")
     recent_saved = codes[-1]
     return render_template('previous_saved.html', content=recent_saved.source_code)
