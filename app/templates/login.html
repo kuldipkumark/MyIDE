@@ -25,10 +25,6 @@
 		<div>
 			{{form.remember_me()}} {{form.remember_me.label}}
 		</div>
-		<div>
-			{{form.recaptcha()}}
-			<br>
-		</div>
 		{{form.submit(class="btn btn-primary ml-auto", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);")}}<br>
 		<p><br>New User?<a href="{{url_for('register')}}"> Click to register</a></p>
 	</form>

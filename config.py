@@ -9,11 +9,6 @@ class Config(object):
     COMPILE_URL = os.environ.get('COMPILE_URL') or 'http://api.hackerearth.com/code/compile/'
     RUN_URL = os.environ.get('RUN_URL') or 'http://api.hackerearth.com/code/run/'
 
-    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY') or \
-                        '6LdvJUkUAAAAACi51BHptpfd3iiwQ-WNnycohf6Q'
-    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY') or \
-                        '6LdvJUkUAAAAAPjdBK1G5Jy9OmuFuMFURR2RaIvw'
-
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
